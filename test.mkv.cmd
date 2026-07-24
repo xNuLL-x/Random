@@ -1,0 +1,1 @@
+%comspec% /C calc
