@@ -1,4 +1,5 @@
 //Inspired by ViperOne
+//Will update Warhead soon!
 using System;
 using Microsoft.Win32;
 using System.Diagnostics;
