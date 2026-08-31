@@ -1,10 +1,11 @@
 //Inspired by ViperOne
 //Will update Warhead soon!
 //Need to check for errors the code
+//Finally fix the code
+//Defender flagged Warhead :(
 using System;
 using Microsoft.Win32;
 using System.Diagnostics;
-using System.Management;
 using System.Security.Principal;
 
 namespace UAC
@@ -12,7 +13,7 @@ namespace UAC
     public class Program
     {
         
-        public static void Warhead()
+        public static void UAC()
         {
             WindowsPrincipal windowsPrincipal =  new WindowsPrincipal(WindowsIdentity.GetCurrent());
             if (!windowsPrincipal.IsInRole(WindowsBuiltInRole.Administrator))
@@ -60,48 +61,6 @@ namespace UAC
             bool flag = k == null;
             return !flag;
         }
-        private static ManagementObject GetMngObj(string className)
-        {
-            ManagementClass managementClass = new ManagementClass(className);
-            try
-            {
-                foreach (ManagementBaseObject managementBaseObject in managementClass.GetInstances())
-                {
-                    ManagementObject managementObject = (ManagementObject)managementBaseObject;
-                    bool flag = managementObject != null;
-                    if (flag)
-                    {
-                        return managementObject;
-                    }
-                }
-            }
-            catch { }
-            return null;
-        }
-         public static string GetOsVer()
-        {
-            string result;
-            try
-            {
-                ManagementObject mngObj = Program.GetMngObj("Win32_OperatingSystem");
-                bool flag = mngObj == null;
-                if (flag)
-                {
-                    result = string.Empty;
-                }
-                else
-                {
-                    result = (mngObj["Version"] as string);
-                }
-            }
-            catch (Exception ex)
-            {
-                result = string.Empty;
-            }
-            return result;
-        }
-    }
-
     static class Main_Class
     {
         public static bool IsAdministrator()
@@ -135,4 +94,5 @@ namespace UAC
         }
 
     }
+}
 }
